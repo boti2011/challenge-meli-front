@@ -1,6 +1,10 @@
 .gradle
 /build/
 
+/dist
+/tmp
+/out-tsc
+
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -12,3 +16,12 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
+node_modules
+
+# System Files
+.DS_Store
+Thumbs.db
+warFile/
+*.DS_Store
+.DS_Store
+
