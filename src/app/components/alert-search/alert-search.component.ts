@@ -10,10 +10,10 @@ import { Alert } from '../../models/alert';
 export class AlertSearchComponent implements OnInit {
 
   public totalItems = 1;
-  public totalItemsToShow = 5;
+  public totalItemsToShow = 2;
   public totalPages = 0;
   public currentPage = 0;
-  public textServerNameSearch = '';
+  public textSearch = '';
   public textDescriptionSearch = '';
   public textAllFieldsSearch = '';
   public alerts: Alert[] = [];
@@ -21,46 +21,36 @@ export class AlertSearchComponent implements OnInit {
   constructor(private searchAlertService: SearchAlertService) { }
 
   ngOnInit(): void {
-    this.getAlertsByFilter('S*', '', '', true);
   }
 
   // tslint:disable-next-line:typedef
-  getAlertsByFilter(textServerNameSearch: string, textDescriptionSearch: string, textAllFieldsSearch: string, isInitialSearch: boolean) {
+  getAlertsByFilter(textServerNameSearch: string, isInitialSearch: boolean) {
     if (isInitialSearch) {
       this.currentPage = 0;
     }
 
-    if (textServerNameSearch !== '' && textDescriptionSearch === '' && textAllFieldsSearch === '') {
-      this.searchAlertService.getAlertsByServerName(textServerNameSearch, this.currentPage, this.totalItemsToShow).subscribe(
-        (res) => {
+    this.searchAlertService.getAlertsByServerName(textServerNameSearch, this.currentPage, this.totalItemsToShow).subscribe(
+      (res) => {
+        if (res.status === 404) {
+          this.alerts = [];
+        } else {
           this.alerts = res.data.alerts;
           this.totalItems = res.data.totalItems;
           this.totalPages = res.data.totalPages;
           this.currentPage = res.data.currentPage;
-        },
-        (error) => {
-          console.log('Error {}', JSON.stringify(error));
         }
-      );
-    } else if (textDescriptionSearch !== '' && textServerNameSearch === '' && textAllFieldsSearch === '') {
-      this.searchAlertService.getAlertsByDescriptionAlert(textDescriptionSearch, this.currentPage, this.totalItemsToShow).subscribe(
-        (res) => {
-          this.alerts = res.data.alerts;
-          this.totalItems = res.data.totalItems;
-          this.totalPages = res.data.totalPages;
-          this.currentPage = res.data.currentPage;
-        },
-        (error) => {
-          console.log('Error {}', JSON.stringify(error));
-        }
-      );
-    }
+      },
+      (error) => {
+        console.log('Error {}', JSON.stringify(error));
+        this.alerts = [];
+      }
+    );
   }
 
   // tslint:disable-next-line:typedef
-  onDataChange(event: any) {
+  onDataChange(event: any, textSearch: string) {
     this.currentPage = event - 1;
-    this.getAlertsByFilter(this.textServerNameSearch, this.textDescriptionSearch, this.textAllFieldsSearch, false);
+    this.getAlertsByFilter(textSearch, false);
   }
 
 }
