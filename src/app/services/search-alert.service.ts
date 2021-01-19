@@ -34,4 +34,14 @@ export class SearchAlertService {
     return this.httpClient
       .get(environment.SEARCH_ALERTS_BY_DESCRIPTION_ALERT, this.httpOptionsWithParams);
   }
+
+  getAlertsByAnyField(field: string, pageNumber: number, ordersPerPage: number): Observable<any> {
+    let params = new HttpParams();
+    params = params.append('field', field);
+    params = params.append('page', pageNumber.toString());
+    params = params.append('size', ordersPerPage.toString());
+    this.httpOptionsWithParams.params = params;
+    return this.httpClient
+      .get(environment.SEARCH_ALERTS_BY_ANY_FIELD, this.httpOptionsWithParams);
+  }
 }

@@ -24,12 +24,12 @@ export class AlertSearchComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  getAlertsByFilter(textServerNameSearch: string, isInitialSearch: boolean) {
+  getAlertsByFilter(textSearch: string, isInitialSearch: boolean) {
     if (isInitialSearch) {
       this.currentPage = 0;
     }
 
-    this.searchAlertService.getAlertsByServerName(textServerNameSearch, this.currentPage, this.totalItemsToShow).subscribe(
+    this.searchAlertService.getAlertsByAnyField(textSearch, this.currentPage, this.totalItemsToShow).subscribe(
       (res) => {
         if (res.status === 404) {
           this.alerts = [];
