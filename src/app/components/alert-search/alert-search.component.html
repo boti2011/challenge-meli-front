@@ -6,7 +6,18 @@
                     <div class="card-header">
                         <strong class="card-title">Buscar Logs</strong>
                     </div>
-                    <div class="card-body">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="ni ni-zoom-split-in"></i></span>
+                        </div>
+                        <input class="form-control" placeholder="Búsqueda" type="text" #textSearch>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-info" (click)="getAlertsByFilter(textSearch.value, true)">Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="card-body" *ngIf="alerts.length > 0">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -33,7 +44,7 @@
                         </table>
                         <div class="d-flex justify-content-center">
                             <pagination-controls responsive="true" previousLabel="Prev" nextLabel="Next"
-                                (pageChange)="onDataChange($event)">
+                                (pageChange)="onDataChange($event, textSearch.value)">
                             </pagination-controls>
                         </div>
                     </div>
