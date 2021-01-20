@@ -1,4 +1,4 @@
-const HOST_SEARCH_URL = 'http://challenge-meli-query.herokuapp.com';
+const HOST_SEARCH_URL = 'https://challenge-meli-query.herokuapp.com';
 
 export const environment = {
   production: true,
