@@ -49,12 +49,12 @@ Para realizar las búsquedas de alertas por medio de comodines se debe tener en 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - SERV*
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![asterisk_example](https://github.com/boti2011/challenge-meli-front/tree/master/src/assets/evidence/search_asterisk.png?raw=true)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![asterisk_example](https://challengemelibcsb.000webhostapp.com/assets/evidence/search_asterisk.png)
 
 - EL comodín * funciona para buscar valores que tengan estrictamente una palabra, y este debe ser añadido en la palabra que queremos buscar:
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - SERVER_1+
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![plus_example](https://github.com/boti2011/challenge-meli-front/tree/master/src/assets/evidence/search_plus.png?raw=true)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ![Plus example](https://challengemelibcsb.000webhostapp.com/assets/evidence/search_plus.png)
 
 Si se requiere más información sobre está funcionalidad, dirigirse a [http://download.nust.na/pub6/mysql/doc/refman/5.0/es/fulltext-boolean.html](http://download.nust.na/pub6/mysql/doc/refman/5.0/es/fulltext-boolean.html)
